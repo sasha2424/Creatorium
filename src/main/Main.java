@@ -23,7 +23,7 @@ public class Main extends PApplet{
 	}
 	
 	public void draw(){
-		ellipse(10,10,100,100);
+		
 		
 	}
 	
