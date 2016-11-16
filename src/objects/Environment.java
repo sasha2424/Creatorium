@@ -13,8 +13,32 @@ public class Environment {
 		this.y = y;
 	}
 	
-	public void addNutrient(float amount, Nutrient type) {
-		nutrients.add(type);
+	
+	public void addNutrient(Nutrient type) {
+		int t = this.find(type);
+		if(t == -1){
+			nutrients.add(type);
+		} else {
+			nutrients.get(t).add(type.getAmount());
+		}
+	}
+	
+	public int find(Nutrient type){
+		for(int i = 0; i < nutrients.size();i++){
+			if(nutrients.get(i).equals(type)){
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	public boolean contains(Nutrient type){
+		for(int i = 0; i < nutrients.size();i++){
+			if(nutrients.get(i).equals(type)){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 

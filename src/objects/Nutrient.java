@@ -17,5 +17,17 @@ public class Nutrient {
 	public void remove(double a) {
 		amount -= a;
 	}
+	
+	public String getType(){
+		return name;
+	}
+	
+	public double getAmount(){
+		return amount;
+	}
+	
+	public boolean equals(Nutrient t){
+		return this.getType().equals(t.getType());
+	}
 
 }
