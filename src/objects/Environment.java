@@ -16,6 +16,15 @@ public class Environment {
 		this.y = y;
 	}
 	
+	
+	
+	
+	public void tick(){
+		
+	}
+	
+	
+	
 	/**
 	 * Adds a nutrient to the environment
 	 * @param type the nutrient to be added
@@ -34,13 +43,22 @@ public class Environment {
 	 * @param type The nutrient to be found
 	 * @return location of nutrient in nutrients array/-1 if it is not there
 	 */
-	public int find(Nutrient type){
+	private int find(Nutrient type){
 		for(int i = 0; i < nutrients.size();i++){
 			if(nutrients.get(i).equals(type)){
 				return i;
 			}
 		}
 		return -1;
+	}
+	
+	public Nutrient get(Nutrient type){
+		for(Nutrient n: nutrients){
+			if(n.equals(type)){
+				return n;
+			}
+		}
+		return null;
 	}
 	
 	
