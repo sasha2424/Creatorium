@@ -20,9 +20,15 @@ public class Environment {
 	
 	
 	public void tick(){
-		
+		for(Species s: species){
+			s.live(this);
+		}
 	}
 	
+	
+	public void addSpecies(Species s){
+		species.add(s);
+	}
 	
 	
 	/**
@@ -52,9 +58,9 @@ public class Environment {
 		return -1;
 	}
 	
-	public Nutrient get(Nutrient type){
+	public Nutrient get(String type){
 		for(Nutrient n: nutrients){
-			if(n.equals(type)){
+			if(n.getType().equals(type)){
 				return n;
 			}
 		}
@@ -74,6 +80,11 @@ public class Environment {
 			}
 		}
 		return false;
+	}
+	
+	
+	public ArrayList<Nutrient> getNutrients(){
+		return nutrients;
 	}
 	
 

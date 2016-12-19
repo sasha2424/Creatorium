@@ -16,26 +16,14 @@ public abstract class Species {
 	private double lossRate;
 	private double lossRateChange;
 	
-	private Religion religion;
-	
-	private double age;
+	private double age; // 1 = 1 year .1 per tick
 	
 	private HashMap<String,Integer> nutrientConsumption;
-	protected double healthGain = 10;
 
 	public Species(){
 		age = 0;
 		lossRateChange = 0;
-		religion = Religion.getAtheist();
 		nutrientConsumption = new HashMap<String,Integer>();
-	}
-	
-	public Species(double healthGain){
-		age = 0;
-		lossRateChange = 0;
-		religion = Religion.getAtheist();
-		nutrientConsumption = new HashMap<String,Integer>();
-		this.healthGain = healthGain;
 	}
 	
 	public abstract void live(Environment e);
@@ -44,7 +32,7 @@ public abstract class Species {
 	protected void convertNutrients(ArrayList<Nutrient> nutrients){
 		for(Nutrient n : nutrients){
 			int t = nutrientConsumption.get(n.getType());
-			System.out.println(t);
+			n.add(-1*t);
 		}
 	}
 	
@@ -86,14 +74,6 @@ public abstract class Species {
 
 	protected void setLossRateChange(double lossRateChange) {
 		this.lossRateChange = lossRateChange;
-	}
-
-	protected Religion getReligion() {
-		return religion;
-	}
-
-	protected void setReligion(Religion religion) {
-		this.religion = religion;
 	}
 
 	protected double getAge() {
