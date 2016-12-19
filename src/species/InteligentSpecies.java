@@ -11,8 +11,13 @@ public class InteligentSpecies extends Species{
 	
 	private Religion religion;
 	
+	private double belief; // goes from 0 to 100%
+	private double lossRate;
+	private double lossRateChange;
+	
 	public InteligentSpecies(){
 		super();
+		lossRateChange = 0;
 		religion = Religion.getAtheist();
 	}
 	
@@ -25,12 +30,6 @@ public class InteligentSpecies extends Species{
 		
 	}
 
-	@Override
-	public void isAlive() {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 	protected Religion getReligion() {
 		return religion;
@@ -38,6 +37,34 @@ public class InteligentSpecies extends Species{
 
 	protected void setReligion(Religion religion) {
 		this.religion = religion;
+	}
+	
+	public void changeLossRate(double c){
+		lossRateChange +=c;
+	}
+
+	protected double getBelief() {
+		return belief;
+	}
+
+	protected void setBelief(double belief) {
+		this.belief = belief;
+	}
+
+	protected double getLossRate() {
+		return lossRate;
+	}
+
+	protected void setLossRate(double lossRate) {
+		this.lossRate = lossRate;
+	}
+
+	protected double getLossRateChange() {
+		return lossRateChange;
+	}
+
+	protected void setLossRateChange(double lossRateChange) {
+		this.lossRateChange = lossRateChange;
 	}
 
 }

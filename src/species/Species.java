@@ -8,13 +8,9 @@ import objects.Nutrient;
 import religions.Religion;
 import objects.Environment;
 
-public abstract class Species {
+public class Species {
 	
 	private double health; // 0 - 100 %
-	
-	private double belief; // goes from 0 to 100%
-	private double lossRate;
-	private double lossRateChange;
 	
 	private double age; // 1 = 1 year .1 per tick
 	
@@ -22,12 +18,15 @@ public abstract class Species {
 
 	public Species(){
 		age = 0;
-		lossRateChange = 0;
 		nutrientConsumption = new HashMap<String,Integer>();
 	}
 	
-	public abstract void live(Environment e);
-	public abstract void isAlive();
+	public void live(Environment e){
+		setAge(getAge() + .1);
+		setHealth(100); //TODO based on crowdedness and how many nutrients are available
+		
+		this.convertNutrients(e.getNutrients());
+	}
 	
 	protected void convertNutrients(ArrayList<Nutrient> nutrients){
 		for(Nutrient n : nutrients){
@@ -36,13 +35,14 @@ public abstract class Species {
 		}
 	}
 	
+	public boolean isAlive(){
+		return health>0;
+	}
+	
 	protected void addNutrientToCosumption(String name,int amount){
 		nutrientConsumption.put(name, amount);
 	}
 	
-	public void changeLossRate(double c){
-		lossRateChange +=c;
-	}
 
 	protected double getHealth() {
 		return health;
@@ -50,30 +50,6 @@ public abstract class Species {
 
 	protected void setHealth(int health) {
 		this.health = health;
-	}
-
-	protected double getBelief() {
-		return belief;
-	}
-
-	protected void setBelief(double belief) {
-		this.belief = belief;
-	}
-
-	protected double getLossRate() {
-		return lossRate;
-	}
-
-	protected void setLossRate(double lossRate) {
-		this.lossRate = lossRate;
-	}
-
-	protected double getLossRateChange() {
-		return lossRateChange;
-	}
-
-	protected void setLossRateChange(double lossRateChange) {
-		this.lossRateChange = lossRateChange;
 	}
 
 	protected double getAge() {
