@@ -15,8 +15,8 @@ public class InteligentSpecies extends Species{
 	private double lossRate;
 	private double lossRateChange;
 	
-	public InteligentSpecies(){
-		super();
+	public InteligentSpecies(String type){
+		super(type);
 		lossRateChange = 0;
 		religion = Religion.getAtheist();
 	}

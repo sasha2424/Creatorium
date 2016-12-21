@@ -17,8 +17,6 @@ public class Environment {
 	}
 	
 	
-	
-	
 	public void tick(){
 		for(Species s: species){
 			s.live(this);
@@ -87,5 +85,9 @@ public class Environment {
 		return nutrients;
 	}
 	
+	
+	public double getDensity(String type){
+		return 0;
+	}
 
 }

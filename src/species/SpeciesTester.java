@@ -14,7 +14,7 @@ public class SpeciesTester {
 	public void test() {
 		Environment e = new Environment(0,0);
 		e.addNutrient(new Nutrient("A",10));
-		InteligentSpecies i = new InteligentSpecies();
+		InteligentSpecies i = new InteligentSpecies("Human");
 		i.addNutrientToCosumption("A", 4);
 		e.addSpecies(i);
 		e.tick();

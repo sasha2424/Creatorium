@@ -11,16 +11,18 @@ import objects.Environment;
 public class Species {
 	
 	private double health; // 0 - 100 %
-	
+	private String type;
 	private double age; // 1 = 1 year .1 per tick
 	
 	private HashMap<String,Integer> nutrientConsumption;
 
-	public Species(){
+	public Species(String type){
+		this.type = type;
 		age = 0;
 		nutrientConsumption = new HashMap<String,Integer>();
 	}
 	
+
 	public void live(Environment e){
 		setAge(getAge() + .1);
 		setHealth(100); //TODO based on crowdedness and how many nutrients are available
@@ -44,6 +46,17 @@ public class Species {
 	}
 	
 
+	
+	//______GETTERS AND SETTERS_______
+	
+	protected String getType() {
+		return type;
+	}
+
+	protected void setType(String type) {
+		this.type = type;
+	}
+	
 	protected double getHealth() {
 		return health;
 	}
